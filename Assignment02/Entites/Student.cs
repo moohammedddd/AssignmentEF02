@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -18,7 +19,18 @@ namespace Assignment02.Entites
 
         public int? Dept_ID { get; set; }
 
- 
+        #region StudentDepartment
+        [ForeignKey("Department")]
+        public int DepartmentId { get; set; }
+        [InverseProperty(nameof(Department.students))]
+        public Department Department { get; set; }
+        #endregion
+
+        #region StudentCourse
+        public ICollection<StudentCourse> StudentCourses { get; set; } = new HashSet<StudentCourse>();
+        #endregion
+
+
 
     }
 }

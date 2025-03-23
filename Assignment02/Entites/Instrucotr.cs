@@ -20,9 +20,15 @@ namespace Assignment02.Entites
         public int Bouns { get; set; }
         public int HourRate { get; set; }
 
+        [ForeignKey("Department")]
         public int Dept_Id { get; set; }
 
-      
+        [InverseProperty(nameof(Entites.Department.Manager))]
+        public Department Manage { get; set; }
+        [InverseProperty(nameof(Entites.Department.instrucotrs))]
+       public Department Department { get; set; }
+
+        public ICollection<CoursIns> CoursIns { get; set; } = new HashSet<CoursIns>();
         
     }
 }

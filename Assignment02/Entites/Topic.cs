@@ -13,5 +13,6 @@ namespace Assignment02.Entites
         public string? Description { get; set; }
         public int? Duration { get; set; }
         public int? Course_ID { get; set; }
+        public ICollection<Course> courses { get; set; } = new List<Course>();
     }
 }
